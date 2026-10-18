@@ -1,0 +1,15 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';
+import {classify,isOverdue,summarise,importEnquiries,parseCSV,toCSV,operationalReport,slaHours} from '../assets/domain.js';
+import {makeSample} from '../assets/sample-data.js';
+const now=Date.parse('2026-10-19T12:00:00Z');
+test('classification is deterministic and human-overridable downstream',()=>{assert.deepEqual(classify('Urgent invoice','I was charged twice'),{category:'Billing',priority:'Urgent'});assert.equal(classify('Hello','I have a question').category,'General');});
+test('SLA hours respond to category and priority',()=>{assert.equal(slaHours('Complaint','Urgent'),4);assert.equal(slaHours('Partnership','Low'),120);});
+test('open overdue detection excludes resolved',()=>{const a=makeSample(now);assert.ok(a.some(x=>isOverdue(x,now)));for(const item of a.filter(x=>x.status==='Resolved')) assert.equal(isOverdue(item,now),false);});
+test('summary metrics are consistent',()=>{const a=makeSample(now);const s=summarise(a,now);assert.equal(s.total,18);assert.equal(s.open+s.resolved,s.total);assert.equal(s.unassigned,a.filter(x=>x.owner==='Unassigned'&&x.status!=='Resolved').length);assert.equal(Object.values(s.byCategory).reduce((x,y)=>x+y,0),s.total);});
+test('quoted CSV and CRLF parse correctly',()=>{assert.deepEqual(parseCSV('a,b\r\n"hello, world","a ""quote"""\r\n'),[['a','b'],['hello, world','a "quote"']]);});
+test('CSV import validates and partially accepts rows',()=>{const csv='customer,email,subject,message,receivedAt\n"A B",a@example.com,Invoice,"charged, twice",2026-10-19T08:00:00Z\n"Bad",bad-email,Need help,test,2026-10-19T08:00:00Z';const r=importEnquiries(csv);assert.equal(r.accepted.length,1);assert.equal(r.rejected.length,1);assert.equal(r.accepted[0].category,'Billing');});
+test('duplicate IDs are refused',()=>{const csv='id,customer,email,subject,message,receivedAt\nD1,A,a@x.com,Hi,Hi,2026-10-19\nD1,B,b@x.com,Hi,Hi,2026-10-19';const r=importEnquiries(csv);assert.equal(r.accepted.length,1);assert.match(r.rejected[0],/Duplicate ID/);});
+test('malformed CSV and missing required columns report errors',()=>{assert.throws(()=>parseCSV('"unfinished'),/Unclosed/);assert.throws(()=>importEnquiries('foo,bar\na,b'),/Missing columns/);});
+test('export CSV round trips, including commas and quote characters',()=>{const a=makeSample(now);a[0].subject='Invoice, "again"';const b=importEnquiries(toCSV(a));assert.equal(b.rejected.length,0);assert.equal(b.accepted.length,a.length);assert.equal(b.accepted[0].subject,a[0].subject);});
+test('reports label metrics and list overdue work',()=>{const r=operationalReport(makeSample(now),now);assert.match(r,/fictional demonstration dataset/);assert.match(r,/Overdue work/);assert.match(r,/Management actions/);});
+test('empty dataset returns safe percentages',()=>{assert.equal(summarise([],now).resolvedRate,0);assert.equal(summarise([],now).total,0);});

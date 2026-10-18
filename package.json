@@ -1,0 +1,16 @@
+{
+  "name": "task-001-operations-inbox",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Dependency-free TypeScript operations workflow demonstration",
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node scripts/bundle.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs",
+    "check": "npm run typecheck && npm test"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

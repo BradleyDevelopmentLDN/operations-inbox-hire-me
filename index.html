@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f7f8fb" />
+  <meta name="description" content="Operations Inbox: a fictional customer enquiry workflow and performance dashboard built for an employment portfolio." />
+  <title>Operations Inbox | Week 1 Portfolio Demo</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="brand"><div class="brand-icon">O<span>.</span></div><div><strong>OPERATIONS</strong><small>INBOX / DEMO</small></div></div>
+      <div class="workspace-label">WORKSPACE <span class="workspace-line"></span></div>
+      <div class="workspace"><div class="workspace-avatar">NS</div><div><strong>Northstar Services</strong><span>Fictional company</span></div><span class="chevron">⌄</span></div>
+      <div class="nav-label">MAIN MENU</div>
+      <nav class="navigation" id="side-nav">
+        <button class="nav-link active" data-view="overview"><span class="nav-ico">▦</span> Overview</button>
+        <button class="nav-link" data-view="enquiries"><span class="nav-ico">▤</span> All enquiries <span id="sidebar-count" class="nav-count">0</span></button>
+        <button class="nav-link" data-view="reporting"><span class="nav-ico">▥</span> Reporting</button>
+      </nav>
+      <div class="nav-label extra-label">RESOURCES</div>
+      <nav class="navigation"><button class="nav-link" data-view="guide"><span class="nav-ico">ⓘ</span> How it works</button></nav>
+      <div class="sidebar-bottom">
+        <div class="demo-card"><span class="dot"></span><strong>Demo environment</strong><p>All people and enquiries are fictional. Changes are saved only in this browser.</p></div>
+        <div class="profile"><span class="profile-avatar">BO</span><div><strong>Portfolio project</strong><small>12-Week Hire Me Challenge</small></div></div>
+      </div>
+    </aside>
+    <main class="main" id="main-content">
+      <header class="topbar"><div class="breadcrumb">Workspace <span>/</span> <strong id="breadcrumb-current">Overview</strong></div><div class="top-actions"><span class="top-meta">● &nbsp; Demo data</span><button class="btn btn-muted" id="reset-btn" title="Restore original fictional data">↺ &nbsp; Reset demo</button></div></header>
+      <div class="content" id="content" aria-live="off"></div>
+      <footer class="main-footer"><span>OPERATIONS INBOX · TASK 001</span><span>Portfolio demonstration · Fictional records · Browser-only storage</span></footer>
+    </main>
+  </div>
+  <div id="drawer-root"></div><div id="modal-root"></div><div id="toast" role="status" aria-live="polite"></div>
+  <input id="csv-upload" type="file" accept=".csv,text/csv" hidden aria-label="Import CSV file" />
+  <script defer src="./assets/app-bundle.js"></script>
+</body>
+</html>

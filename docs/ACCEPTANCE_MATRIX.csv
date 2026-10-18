@@ -1,0 +1,14 @@
+id,requirement,verification,evidence,status
+AC-01,Fictional sample,18 seeds with mixed states,domain tests and screenshot,PASS
+AC-02,CSV import,Quoted fields invalid row duplicate handling,domain tests and browser harness,PASS
+AC-03,Human editable classification,Keyword logic and edited fields,typecheck tests and browser harness,PASS
+AC-04,Ownership and status,Save and rehydrate with storage double,browser harness,PASS_WITH_LIMITATION
+AC-05,Overdue detection,Open only and past due,domain test and browser filter,PASS
+AC-06,Metrics,Counts and empty dataset,domain tests and browser reporting,PASS
+AC-07,Export,CSV and markdown downloads,domain tests and browser harness,PASS
+AC-08,Search and filter,Search and overdue filter,browser harness,PASS
+AC-09,Exception handling,Malformed CSV and duplicate detection,domain tests,PASS
+AC-10,Responsive and keyboard,Mobile screenshot and row keyboard support,scripted browser and code review,PARTIAL
+AC-11,Portfolio evidence,README case study screenshots and script,files created,PASS
+RELEASE-PUBLIC,Public GitHub repository,Public URL manually confirmed,pending,BLOCKED
+RELEASE-DEPLOY,Public Vercel demonstration,Vercel production READY and protection disabled; external HTTP not independently verified,https://operations-inbox-hire-me.vercel.app,READY_SMOKE_TEST_PENDING
