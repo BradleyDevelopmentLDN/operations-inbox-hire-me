@@ -67,4 +67,4 @@ Command: `npm run check` after compilation.
 
 ## Deployment observation
 
-The connected Vercel service reports a **READY** production deployment at `https://operations-inbox-hire-me.vercel.app`, with authentication disabled. The external HTTP smoke test remains unverified because direct network access was blocked in the test environment. See `DEPLOYMENT.md`.
+The connected Vercel service reports a **READY** production deployment at `https://operations-inbox-hire-me.vercel.app`, with authentication disabled. Its connected HTTP fetch returned **200 OK**, with the expected app HTML. Interactive testing *on that public domain* still awaits a real browser session. See `DEPLOYMENT.md`.

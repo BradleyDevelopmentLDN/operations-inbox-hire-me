@@ -10,5 +10,5 @@ AC-08,Search and filter,Search and overdue filter,browser harness,PASS
 AC-09,Exception handling,Malformed CSV and duplicate detection,domain tests,PASS
 AC-10,Responsive and keyboard,Mobile screenshot and row keyboard support,scripted browser and code review,PARTIAL
 AC-11,Portfolio evidence,README case study screenshots and script,files created,PASS
-RELEASE-PUBLIC,Public GitHub repository,Public URL manually confirmed,pending,BLOCKED
-RELEASE-DEPLOY,Public Vercel demonstration,Vercel production READY and protection disabled; external HTTP not independently verified,https://operations-inbox-hire-me.vercel.app,READY_SMOKE_TEST_PENDING
+RELEASE-PUBLIC,Public GitHub repository,GitHub connector verified public main commit,https://github.com/BradleyDevelopmentLDN/operations-inbox-hire-me,PASS
+RELEASE-DEPLOY,Public Vercel demonstration,Vercel production READY and connected HTTP fetch 200 OK; interactive public-browser test still outstanding,https://operations-inbox-hire-me.vercel.app,HTTP_SMOKE_PASS

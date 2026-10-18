@@ -15,7 +15,7 @@ Date: 18 October 2026
 
 ## Verification boundary
 
-The Vercel API accepted the deployment, assigned production domains and returned READY. The source file can be listed from the deployment file tree. Independent HTTP requests from the work environment could not reach the domain, so *browser-level verification against the actual public URL* remains unchecked. The equivalent compiled code passed offline browser interaction tests before deployment.
+The Vercel API accepted the deployment, assigned production domains and returned READY. The source file can be listed from the deployment file tree. On 18 October, the connected Vercel HTTP fetch returned **200 OK** with the expected Operations Inbox HTML. A complete interactive, public-browser end-to-end test remains unchecked. The equivalent compiled code passed offline browser interaction tests before deployment.
 
 ## Smoke-test checklist
 

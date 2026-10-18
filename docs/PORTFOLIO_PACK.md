@@ -42,6 +42,7 @@ These statements deliberately make no claims about real customer adoption, hours
 - [x] Fictional application and tested core behaviours
 - [x] README, screenshots, demo script and case study
 - [x] Production deployment marked READY by Vercel, with SSO/password protection disabled
-- [ ] Independent public-domain browser smoke test (blocked by execution environment)
-- [ ] Public GitHub repository holding the source and documentation
+- [x] Connected Vercel HTTP smoke test: production URL returned **200 OK** with app HTML
+- [ ] Interactive browser smoke test on the actual deployed URL
+- [x] [Public GitHub repository](https://github.com/BradleyDevelopmentLDN/operations-inbox-hire-me) holding the source and documentation
 - [ ] Two-minute screen recording actually captured (script is ready)

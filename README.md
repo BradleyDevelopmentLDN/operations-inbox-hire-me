@@ -15,7 +15,7 @@ Small teams often use a mixture of email and spreadsheets to track customer enqu
 
 ## Try the demonstration
 
-**Vercel production deployment:** [Open Operations Inbox](https://operations-inbox-hire-me.vercel.app) (Vercel state: **READY**, with deployment authentication disabled; independent live HTTP retrieval was blocked in the test environment).
+**Vercel production deployment:** [Open Operations Inbox](https://operations-inbox-hire-me.vercel.app) (Vercel state: **READY**, with deployment authentication disabled; the published homepage returned HTTP **200 OK** through the connected Vercel fetch tool).
 
 The app starts with 18 fictional enquiries, including deliberately overdue, unassigned, urgent and resolved cases. Choose a row to review or change its category, priority, owner, status, target date and internal notes. Changes persist in the same browser. Use **Reset demo** to restore the example data.
 
